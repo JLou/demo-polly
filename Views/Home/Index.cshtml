@@ -1,0 +1,16 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@model InputViewModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+
+<form method="POST" asp-action="IndexPost" asp-controller="Home">
+    <div>Name : <input asp-for="Name"/></div>
+    <input type="submit" />
+</form>
+
+@if (@Model?.Name != null && @Model?.Info != null) {
+    <p>Vous avez tapé @Model.Name</p>
+    <p>La signification est : @Model.Info</p>
+}
