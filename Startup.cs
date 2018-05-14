@@ -23,6 +23,7 @@ namespace demo_polly
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            services.AddCors();
             services.AddSingleton<INameService, NameService>();
         }
 
@@ -39,7 +40,11 @@ namespace demo_polly
             }
 
             app.UseStaticFiles();
-
+            app.UseCors(builder =>
+                builder.WithOrigins("http://localhost:4200")
+                       .AllowAnyHeader()
+                       .AllowAnyMethod()
+            );
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

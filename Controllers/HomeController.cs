@@ -35,7 +35,7 @@ namespace demo_polly.Controllers
         public async Task<IActionResult> IndexPost()
         {
             var info = await _nameService.GetNameInfoAsync(Input.Name);
-            return View("index", 
+            return View("index",
             new InputViewModel
             {
                 Name = Input.Name,
